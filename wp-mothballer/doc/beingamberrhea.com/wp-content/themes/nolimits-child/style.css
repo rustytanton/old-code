@@ -1,0 +1,11 @@
+/*
+Theme Name:     No Limits Child Theme
+Theme URI:      http://beingamberrhea.com
+Description:    Child theme for the No Limits theme
+Author:         Rusty Tanton
+Author URI:     http://rustytanton.com
+Template:       nolimits                             
+Version:        0.1.0
+*/
+
+@import url("../nolimits/style.css");

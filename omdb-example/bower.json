@@ -1,0 +1,13 @@
+{
+  "name": "omdb-example",
+  "version": "0.0.1",
+  "authors": [
+    "Rusty Tanton <rusty.tanton@gmail.com> (http://rustytanton.com)"
+  ],
+  "dependencies": {
+    "angular": "~1.2.23",
+    "foundation": "~5.4.3",
+    "angular-route": "~1.2.23",
+    "foundation-icon-fonts": "zurb/foundation-icon-fonts"
+  }
+}

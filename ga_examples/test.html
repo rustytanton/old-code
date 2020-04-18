@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>test</title>
+<style type="text/css">
+
+</style>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+<div id="sidebar">
+	<ul id="blogroll">
+		<li><a href="http://www.cnn.com">cnn</a></li>
+		<li><a href="http://rustytanton.dev/home">rusty's blog</a></li>
+		<li><a href="/home">home</a></li>
+	</ul>
+</div>
+
+<script type="text/javascript">
+	$(function() {
+		
+		$('#blogroll a').each(function() {
+			
+			// create a reference to avoid scoping mistakes
+			var l = this;
+			
+			// ignore mailto links
+			if (l.href.indexOf('mailto:') === -1) {
+				
+				// internal links
+				if (l.href.indexOf(window.location.hostname) > -1) {
+					$(l).click(function() {
+						// add clickzone=sidebar query string param
+						l.href += l.href.indexOf('?') ? '&amp;' : '?';
+						l.href += 'cz=sidebar';
+						return false;
+					});
+				}
+				
+				// external links
+				else if (/(http|https):\/\//.test(l.href)) {
+					$(l).click(function() {
+						
+						return false;
+					});
+				}
+				
+			}
+		});
+		
+	});
+</script>
+
+</body>
+</html>

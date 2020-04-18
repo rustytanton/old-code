@@ -1,0 +1,29 @@
+// add tracking to sidebar blogroll module
+$('#sidebar #blogroll a').each(function() {
+			
+	// create a reference to avoid scoping mistakes
+	var self = this;
+	
+	// ignore mailto links
+	if (self.href.indexOf('mailto:') < 0) {
+		
+		// internal links
+		if (self.href.indexOf(window.location.hostname) > -1) {
+			$(self).click(function() {
+				// add clickzone=sidebar query string param
+				self.href += self.href.indexOf('?') ? '&amp;' : '?';
+				self.href += 'cz=sidebar';
+				return false;
+			});
+		}
+		
+		// external links
+		else if (/^(http|https):\/\//.test(self.href)) {
+			$(self).click(function() {
+				window.wpTrackPage({ pageType: 'Blogroll', url : self.href });
+				return false;
+			});
+		}
+		
+	}
+});

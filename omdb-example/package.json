@@ -1,0 +1,11 @@
+{
+  "name": "omdb-example",
+  "version": "0.0.1",
+  "author": "Rusty Tanton <rusty.tanton@gmail.com> (http://rustytanton.com)",
+  "devDependencies": {
+    "node-static": "^0.7.4"
+  },
+  "scripts" : {
+  	"start" : "node server.js"
+  }
+}

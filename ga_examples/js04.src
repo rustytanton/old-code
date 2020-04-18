@@ -1,0 +1,15 @@
+//  add tracking to external links within blog entries
+$('#content a').each(function() {
+			
+	// create a reference to avoid scoping mistakes
+	var self = this;
+	
+	// add tracking to external links starting with http or https
+	if (/^(http|https):\/\//.test(self.href) && self.href.indexOf(window.location.hostname) < 0) {
+			$(self).click(function() {
+				window.wpTrackPage({ pageType: 'Outgoing from Blog Entry', url : self.href });
+				return false;
+			});
+		}
+	}
+});

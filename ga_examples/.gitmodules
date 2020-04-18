@@ -1,0 +1,6 @@
+[submodule "GeSHi"]
+	path = GeSHi
+	url = git://github.com/benji07/GeSHi.git
+[submodule "geshi"]
+	path = geshi
+	url = git://github.com/benji07/GeSHi.git

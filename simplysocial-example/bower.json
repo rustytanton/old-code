@@ -1,0 +1,15 @@
+{
+  "name": "simplysocial",
+  "version": "0.0.1",
+  "authors": [
+    "Rusty Tanton <rusty.tanton@gmail.com> (http://rustytanton.com)"
+  ],
+  "dependencies": {
+    "angular": "~1.2.24",
+    "angular-route": "~1.2.24",
+    "angular-sanitize": "~1.2.24",
+    "Placeholders": "jamesallardice/Placeholders.js",
+    "bootstrap": "~3.2.0",
+    "modernizr": "~2.8.3"
+  }
+}

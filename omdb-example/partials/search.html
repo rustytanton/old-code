@@ -1,0 +1,15 @@
+<section class="columns large-6 large-offset-3">
+
+	<h2>Results for '{{$routeParams.s}}'</h2>
+	
+	<p ng-show="searching">Searching...</p>
+
+	<p ng-show="error">No results found. <a href="/">Try again?</a></p>
+
+	<div ng-show="done">
+		<ul>
+			<li ng-repeat="movie in result"><a href="/movie/{{movie.imdbID}}">{{movie.Title}} ({{movie.Year}})</a></li>
+		</ul>
+	</div>
+
+</section>

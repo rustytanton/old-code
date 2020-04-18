@@ -1,0 +1,41 @@
+{
+  "name": "es6-jasmine",
+  "version": "0.0.0",
+  "description": "test project",
+  "main": "main.js",
+  "scripts": {
+    "build": "build.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rusty Tanton",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^5.6.5",
+    "bower": "^1.4.1",
+    "bsp-grunt": "git://github.com/perfectsense/brightspot-js-grunt#6a63d8c6137bac3efc459501a52d3db9f8d576ff",
+    "es6-module-loader": "^0.17.2",
+    "express": "^4.13.0",
+    "extend": "^2.0.1",
+    "grunt": "^0.4.5",
+    "grunt-autoprefixer": "^0.7.6",
+    "grunt-bower-install-simple": "^1.0.3",
+    "grunt-browserify": "^2.1.4",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-less": "^0.11.4",
+    "grunt-contrib-requirejs": "^0.4.4",
+    "grunt-contrib-watch": "^0.6.1",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.12.36",
+    "karma-jasmine": "^0.3.5",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "karma-systemjs": "^0.5.0",
+    "lodash": "^3.9.3",
+    "phantomjs": "^1.9.17",
+    "phantomjs-polyfill": "0.0.1",
+    "requirejs": "^2.1.18",
+    "systemjs": "^0.18.2",
+    "systemjs-builder": "^0.12.1"
+  }
+}

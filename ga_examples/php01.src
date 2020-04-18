@@ -1,0 +1,30 @@
+//
+// PHP example 2: http://rustytanton.com/ga_examples/#php02
+// add external Javascript file to the page
+//
+function gaExample_AddJS() {
+	// code
+	// will call gaExample_JSParams() below
+}
+
+//
+// PHP example 3: http://rustytanton.com/ga_examples/#php03
+// create associative array of JS parameters
+//
+function gaExample_JSParams() {
+	// code
+}
+
+// add load JS function to the queue
+add_action('wp_print_scripts', 'gaExample_AddJS');
+
+//
+// PHP example 4: http://rustytanton.com/ga_examples/#php04
+// function to modify RSS URLs with campaign params
+//
+function gaExample_RSSCampaignLink($content) {
+	// code
+}
+
+// add RSS filter to the queue
+add_filter('the_permalink_rss', 'gaExample_RSSCampaignLink');

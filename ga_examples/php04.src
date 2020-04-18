@@ -1,0 +1,26 @@
+//
+// PHP example 4: http://rustytanton.com/ga_examples/#php04
+// returns URL modified with Google Analytics campaign params
+//
+function gaExample_RSSCampaignLink($url) {
+	$post_id = get_the_ID();
+	$post = get_post($post_id);
+	
+	// generate a unique campaign ID from the post date and title
+	$campaign_date = date('Ymd', time($post->post_date));
+	$campaign_name = substr( preg_replace('/[^A-Za-z0-9]/', "", $post->post_name), 0, 15);
+	$campaign_id = $post->ID . '_' . $campaign_date . '_' . $campaign_name;
+	
+	// modify and return URL
+	if (strpos($content, '?') !== false) {
+		$url .= '&amp;amp;';
+	} else {
+		$url .= '?';
+	}
+	$url .= 'utm_source=rss';
+	$url .= '&amp;amp;utm_medium=main';
+	$url .= '&amp;amp;utm_campaign=' . $campaign_id;
+	
+	return $url;
+	
+}

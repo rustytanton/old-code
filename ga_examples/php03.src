@@ -1,0 +1,99 @@
+//
+// PHP example 3: http://rustytanton.com/ga_examples/#php03
+// return associative array of JS parameters that might look like:
+// array(
+//  'authorName' => 'Rusty Tanton',
+//  'category' => 'Sports',
+//  'pageType' => 'Blog Entry',
+//  'subCategory' => 'Baseball',
+//  'visitorType' => 'Anonymous'
+// )
+//
+function gaExample_JSParams() {
+	
+	// array to return
+	$params = array();
+	
+	// add the author name on single pages
+	$post_id = get_the_ID();
+	$post = get_post($post_id);
+	
+	if (is_numeric($post->post_author) && is_single()) {
+		$author = get_userdata($post->post_author);
+		if ($author->display_name) {
+			$params['authorName'] = $author->display_name;
+		}
+	}
+	
+	// add page type, category and sub category to the params
+	$page_type = 'Unknown';
+	
+	if (is_front_page()) {
+		$page_type = 'Home';
+	}
+	
+	if (is_page()) {
+		$page_type = 'Page';
+	}
+	
+	if (is_single()) {
+	
+		// we're presuming no more than one parent category
+		// and one sub category per post. other set-ups may
+		// require a more complex weighting scheme
+		//
+		foreach (get_the_category() as $category) {
+			if ($category->parent) {
+				$page_subcategory = $category->name;
+			} else {
+				$page_category = $category->name;
+			}
+		}
+		
+		$page_type = 'Blog Entry';
+	}
+	
+	if (is_tag()) {
+		$page_type = 'Tag Archive';
+	}
+	
+	if (is_search()) {
+		$page_type = 'Search Result';
+	}
+	
+	if (is_date()) {
+		$page_type = 'Date Archive';
+	}
+	
+	if (is_404()) {
+		$page_type = '404';
+	}
+	
+	if ($page_category) { $params['category'] = $page_category; }
+	if ($page_subcategory) { $params['subCategory'] = $page_subcategory; }
+	if ($page_type) { $params['pageType'] = $page_type; }
+	
+	// add user type to the params
+	// first check Wordpress user object
+	// if name doesn't exist there, check cookie
+	// if it still doesn't exist, default to Anonymous
+	//
+	$user = wp_get_current_user();
+	
+	if (!$user->user_nicename) {
+		$user->user_nicename = preg_replace( "/[^A-Za-z0-9]/i", '',  $_COOKIE['comment_author_' . COOKIEHASH]);
+	}
+	
+	if (!$user->user_nicename) {
+		$user->user_nicename = 'Anonymous';
+	}
+	
+	if ($user->user_nicename != 'Anonymous') {
+		$user->user_nicename = 'Commenter';
+	}
+	
+	$params['visitorType'] = $user->user_nicename;
+	
+	return $params;
+	
+}

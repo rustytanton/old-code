@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="OmdbSearch">
+	<head>
+		<title>Movie Search</title>
+		<script src="/bower_components/angular/angular.js"></script>
+		<script src="/bower_components/angular-route/angular-route.js"></script>
+		<link rel="stylesheet" type="text/css" href="/bower_components/foundation/css/foundation.css" />
+		<link rel="stylesheet" type="text/css" href="/bower_components/foundation-icon-fonts/foundation-icons.css" />
+		<link rel="stylesheet" type="text/css" href="/app.css" />
+		<script src="/app.js"></script>
+	</head>
+	<body>
+		
+		<header class="omdb-header row">
+			<div class="columns large-12 text-center">
+				<i class="fi-magnifying-glass"></i> <h1><a href="/">Movie Search</a></h1>
+			</div>
+		</header>
+
+		<div class="row" ng-view></div>
+		
+		<footer class="row">
+			<div class="columns large-12 text-center">
+				<p>Results provided by the <a href="http://www.omdbapi.com/">Open Movie Database API</a></p>
+			</div>
+		</footer>
+
+	</body>
+</html>

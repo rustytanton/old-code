@@ -1,0 +1,39 @@
+//
+// create stub global page tracking function so users don't
+// encounter errors if they click something before page loads
+//
+window.wpTrackPage = function() {};
+
+
+//
+// run all real code within jQuery document.ready
+// allows DOM to load before running scripts
+// avoid namspace clashes, restore access to jQuery $ shortcut
+//
+jQuery(function($) {
+
+	// Javascript example 2: http://rustytanton.com/ga_examples/#js02
+	//  load/initiate Google Analytics
+	
+	// Javascript example 3: http://rustytanton.com/ga_examples/#js03
+	//  global page tracking function
+	//
+	window.wpTrackPage = function(o) {
+		// code
+	};
+	
+	// track initial page view
+	window.wpTrackPage();
+	
+	// Javascript example 4: http://rustytanton.com/ga_examples/#js05
+	//  add tracking to external links within blog entries
+	
+	// Javascript example 5: http://rustytanton.com/ga_examples/#js04
+	//  add tracking to sidebar blogroll module
+	
+	// Javascript example 6: http://rustytanton.com/ga_examples/#js06
+	//  add tracking to comment submit form
+	
+	// Javascript example 7: http://rustytanton.com/ga_examples/#js07
+	//  add tracking to thickbox
+});

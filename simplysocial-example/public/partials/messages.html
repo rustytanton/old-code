@@ -1,0 +1,52 @@
+<section class="messages-banner">
+	<form class="message-banner-enter-message" name="messageBannerForm">
+		<input name="message" placeholder="What's on your mind?" />
+		<div class="buttons">
+			<a class="add-photo-link">Add Photo</a>
+			<a class="add-video-link">Add Video</a>
+		</div>
+	</form>
+	<nav>
+		<ul>
+			<li><a ng-class="{ current : messagesFilter!='photo' && messagesFilter!='video' }" ng-click="filterMessages('all')">All posts</a></li>
+			<li><a ng-class="{ current : messagesFilter=='photo' }" ng-click="filterMessages('photo')">Photos</a></li>
+			<li><a ng-class="{ current : messagesFilter=='video' }" ng-click="filterMessages('video')">Videos</a></li>
+		</ul>
+		<button class="list-button" ng-class="{ current : !grid }" ng-click="grid=false"></button>
+		<button class="grid-button" ng-class="{ current : grid }" ng-click="grid=true"></button>
+	</nav>
+</section>
+
+<section ng-class="{ grid : grid, list : !grid }" class="messages">
+
+	<div ng-repeat="message in messages">
+		<div class="message message-{{type}}" ng-click=>
+			<div class="message-content">
+				<img class="user-avatar" alt="" ng-src="{{message.avatar}}" />
+				<h3>{{message.name}}</h3>
+				<div class="content" ng-bind-html="message.content"></div>
+			</div>
+			<img class="content-photo" alt="" ng-src="{{message.src}}" ng-show="message.type=='photo' || message.type=='video'" />
+			<a class="comments-toggle" ng-class="{ expanded : showComments }" ng-click="showComments=!showComments">
+				<span ng-show="!showComments">Expand</span>
+				<span ng-show="showComments">Collapse</span>
+			</a>
+			<nav>
+				<button class="message-like"></button>
+				<button class="message-share"></button>
+				<span class="message-time">{{message.time}}</span>
+			</nav>
+			<div class="comments" ng-show="showComments">
+				<div class="comment" ng-repeat="comment in message.comments">
+					<img class="user-avatar" alt="" ng-src="{{comment.avatar}}" />
+					<h3>{{comment.title}}</h3>
+					<div class="content">{{comment.content}}</div>
+				</div>
+				<form class="leave-comment" name="leaveComment" action="">
+					<input type="text" name="comment" placeholder="Reply..." />
+				</form>
+			</div>
+		</div>
+	</div>
+
+</section>

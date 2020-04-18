@@ -1,0 +1,31 @@
+// overwrite thickbox functions to add tracking
+
+// create references to old functions
+var old_tb_show = window.tb_show;
+var old_tb_remove = window.tb_remove;
+
+// overwrite old tb_show function with new function
+window.tb_show = function(caption, url, imageGroup) {
+	
+	// save current thickbox index
+	this.current = imageGroup;
+	
+	// do tracking
+	window.wpPageTrack({
+		pageType: "Thickbox",
+		url: '/thickbox/' + imageGroup + '/' + url
+	});
+	
+	// run the original function
+	old_tb_show(caption, url, imageGroup);
+};
+
+
+window.tb_remove = function() {
+	window.wpPageTrack({
+		pageType: 'Thickbox',
+		url : '/thickbox/' + window.tb_show.current + '/close'
+	});
+	window.tb_show.current = null;
+	return old_tb_remove();
+};

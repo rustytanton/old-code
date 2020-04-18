@@ -1,0 +1,8 @@
+{
+  "name": "simplysocial",
+  "version": "0.0.1",
+  "author": "Rusty Tanton <rusty.tanton@gmail.com> (http://rustytanton.com)",
+  "dependencies": {
+    "express": "^4.9.0"
+  }
+}

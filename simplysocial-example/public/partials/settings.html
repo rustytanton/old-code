@@ -1,0 +1,36 @@
+<section class="settings">
+	<h2>Settings</h2>
+	<form name="settings">
+	<section class="settings-subsection settings-subsection-account clearfix">
+		<h3>Account</h3>
+		<div class="account-picture">
+			<img alt="" src="/images/user-picture-example-large.jpg" />		
+			<button>Change</button>
+		</div>
+		<div class="text-inputs">
+			<label><input class="text-input text-input-name" name="name" type="text" placeholder="Name" /></label>
+			<label><input class="text-input text-input-email" name="email" type="email" placeholder="E-mail address" /></label>
+			<label><input class="text-input text-input-pw" name="pw" type="password" placeholder="Password" /></label>
+		</div>
+	</section>
+	<section class="settings-subsection settings-subsection-notifications">
+		<h3>Notifications</h3>
+		<ul>
+			<li><button class="image-checkbox" ng-class="{ toggled : notify1 }" ng-click="notify1=!notify1"></button> email me when my posts are marked as favorites</li>
+			<li><button class="image-checkbox" ng-class="{ toggled : notify2 }" ng-click="notify2=!notify2"></button> email me when I'm mentioned</li>
+			<li><button class="image-checkbox" ng-class="{ toggled : notify3 }" ng-click="notify3=!notify3"></button> email me when I get a reply</li>
+			<li><button class="image-checkbox" ng-class="{ toggled : notify4 }" ng-click="notify4=!notify4"></button> email me when someone follows me</li>
+	</section>
+	<section class="settings-subsection settings-subsection-notifications">
+		<h3>Privacy</h3>
+		<ul>
+			<li><button class="image-select" ng-class="{ toggled : privacy1 }" ng-click="privacy1=true; privacy2=false; privacy3=false"></button> allow anyone to tag me</li>
+			<li><button class="image-select" ng-class="{ toggled : privacy2 }" ng-click="privacy1=false; privacy2=true; privacy3=false"></button> only allow people I follow to tag me</li>
+			<li><button class="image-select" ng-class="{ toggled : privacy3 }" ng-click="privacy1=false; privacy2=false; privacy3=true"></button> don't allow anyone to tag me</li>
+			<li><button  class="image-checkbox" ng-class="{ toggled : privacy4 }" ng-click="privacy4=!privacy4"></button> add location to my posts</li>
+			<li><button  class="image-checkbox" ng-class="{ toggled : privacy5 }" ng-click="privacy5=!privacy5"></button> let others find me by email address</li>
+			<li><button  class="image-checkbox" ng-class="{ toggled : privacy6 }" ng-click="privacy6=!privacy6"></button> tailor ads based on my information</li>
+		</ul>
+	</section>
+	<button class="submit-button">Save Changes</button>
+</section>

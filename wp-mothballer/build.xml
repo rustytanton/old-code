@@ -1,0 +1,61 @@
+<project name="wp-mothballer" default="all" basedir=".">
+
+	<property name="dir.build" location="build" />
+	<property name="dir.dist" location="dist" />
+	<property name="dir.src" location="src" />
+	<property name="dir.test" location="test" />
+	<condition property="dir.wp" value="${wpdir}" else="..">
+        <isset property="wpdir" />
+    </condition>
+
+	<property name="file.dlscript" location="${dir.build}/build.xml" />
+	<property name="file.dlxsl" location="${dir.src}/sitemap-to-download-list.xsl" />
+	<condition property="file.sitemap" value="${sitemap}" else="../sitemap.xml">
+        <isset property="sitemap" />
+    </condition>
+
+	<target name="all" depends="init,compile,dist" />
+
+	<target name="init">
+		<mkdir dir="${dir.build}" />
+		<mkdir dir="${dir.dist}" />
+	</target>
+
+	<target name="compile" depends="init">
+		<xslt in="${file.sitemap}" out="${file.dlscript}" style="${file.dlxsl}" />
+		<ant antfile="${file.dlscript}" inheritAll="false">
+			<property name="dir.dest" value="${dir.build.cache}" />
+		</ant>
+	</target>
+
+	<target name="dist" depends="init,compile">
+		<copy todir="${dir.dist}">
+			<fileset dir="${dir.wp}">
+				<exclude name="**/*.php"/>
+				<exclude name="**/wp-mothballer"/>
+			</fileset>
+		</copy>
+		<copy todir="${dir.dist}">
+			<fileset dir="${dir.build}">
+				<exclude name="**/build.xml"/>
+			</fileset>
+		</copy>
+		<copy file="${dir.src}/.htaccess" todir="${dir.dist}" overwrite="true" />
+	</target>
+
+	<target name="test">
+		<ant antfile="build.xml" inheritAll="false">
+			<property name="sitemap" value="${dir.test}/fixtures/sitemap.xml" />
+			<property name="wpdir" value="${dir.test}/fixtures/wpdir" />
+		</ant>
+		<!--
+			@todo verify correct files were copied
+		-->
+	</target>	
+
+	<target name="clean">
+		<delete dir="${dir.build}" />
+		<delete dir="${dir.dist}" />
+	</target>
+
+</project>

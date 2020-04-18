@@ -1,0 +1,25 @@
+//
+// PHP example 2: http://rustytanton.com/ga_examples/#php02
+// add external Javascript file to the page
+//
+function gaExample_AddJS() {
+	
+	// current user
+	$user = wp_get_current_user();
+	
+	// only add script outside admin screens and for non-admin users
+	if (!is_admin() && $user->user_level < 10) {
+			
+		// url for ga.js in our theme folder
+		$ga_ex_js = get_bloginfo('template_url') . '/ga.js';
+		
+		// add ga.js to the queue with jQuery as a prerequisite
+		wp_enqueue_script('ga_example_js', $ga_ex_js, array('jquery'), false, true);
+		
+		// pass JS parameters to the page as global JSON var gaExampleParams
+		$ga_params = gaExample_JSParams();
+		wp_localize_script('ga_example_js', 'gaExampleParams', $ga_params);
+		
+	}
+
+}

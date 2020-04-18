@@ -1,0 +1,52 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+a {
+	color: #60a9d2;
+}
+body {
+	color: #555;
+	font-family: 'Cardo', Georgia, serif;
+	font-size: 1.2em;
+	padding: 2em;
+}
+h1 {
+	font-size: 2em;
+	font-weight: normal;
+	margin-bottom: 1em;
+}
+h2 {
+	border-bottom: 1px #555 solid;
+	font-size: 1.4em;
+	font-weight: normal;
+	margin-bottom: 1em;
+}
+h3 {
+	font-size: 1em;
+	margin-bottom: 0.5em;
+}
+p {
+	margin-bottom: 0.5em;
+}
+section {
+	display: block;
+	margin-bottom: 1em;
+}
+ul {
+	margin: 1em 0;
+	padding-left: 2em;
+}
+iframe {
+	border: 1px #555 solid;
+	margin: 1em 0;
+}
+@media ( max-width: 600px ) {
+	iframe {
+		width: 100%;
+	}
+}
+
+#tophead {
+	text-align: center;
+}

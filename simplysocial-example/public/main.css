@@ -1,0 +1,596 @@
+/* fonts */
+@font-face {
+    font-family: ProximaNova-Regular;
+    src: url('/fonts/ProximaNova-Regular.otf');
+}
+@font-face {
+    font-family: ProximaNova-Light;
+    src: url('/fonts/ProximaNova-Light.otf');
+}
+@font-face {
+    font-family: ProximaNova-Bold;
+    src: url('/fonts/ProximaNova-Bold.otf');
+}
+
+/* kellum method, see: http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/ */
+.hide-text {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+/* micro clearfix, see: http://nicolasgallagher.com/micro-clearfix-hack/ */
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+.clearfix:after {
+    clear: both;
+}
+
+/* basic reset + defaults */
+* {
+	border-width: 0px;
+	font-family: ProximaNova-Regular, arial, helvetica, sans-serif;
+	list-style: none;
+	margin: 0;
+	outline-width: 0px;
+	padding: 0;
+}
+
+/* global */
+a {
+	cursor: pointer;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;	
+}
+.blur10px {
+	-webkit-filter: blur(10px);
+	-moz-filter: blur(10px);
+	-ms-filter: blur(10px);
+	filter: blur(10px);
+}
+.submit-button {
+	background: #00b286;
+	border-radius: 2px;
+	color: #fff;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 15px;
+	padding: 8px 20px;
+}
+
+/* app header */
+header {
+	position: relative;
+}
+header h1,
+.header-new-message,
+.header-search,
+.header-user-picture,
+.header-user-menu {
+	position: absolute;
+}
+.header-menubar {
+	background: #262728;
+	min-height: 60px;
+	min-width: 320px;
+}
+.mobile .header-menubar {
+	min-height: 100px;
+}
+.header-user-menu a {
+	color: #70767f;
+}
+header h1 {
+	background: url('/images/sprite-header.png') 0 -58px no-repeat;
+	height: 34px;
+	width: 138px;
+}
+.tablet header h1,
+.desktop header h1 {
+	left: 93px;
+	top: 8px;
+}
+.mobile header h1 {
+	background-position: center -58px;
+	top: 12px;
+	width: 100%;
+}
+.header-new-message {
+	background: #262728 url('/images/sprite-header.png') 0px -32px no-repeat;
+	display: block;
+	height: 26px;
+	width: 31px;
+}
+.tablet .header-new-message,
+.desktop .header-new-message {
+	top: 14px;
+	right: 383px;
+}
+.mobile .header-new-message {
+	top: 14px;
+	right: 10px;
+}
+.header-user-picture {
+	background: #262728 url('/images/sprite-header.png') 0 0 no-repeat;
+	padding-right: 15px;
+	cursor: pointer;
+}
+.tablet .header-user-picture,
+.desktop .header-user-picture {
+	top: 12px;
+	right: 98px;
+}
+.mobile .header-user-picture {
+	top: 52px;
+	right: 10px;
+}
+.header-user-menu {
+	background: #f4f4f4 url('/images/sprite-header.png') 0px -92px no-repeat;
+	font-size: 13px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	width: 96px;
+}
+.mobile .header-user-menu {
+	right: 5px;
+	top: 92px;
+}
+.tablet .header-user-menu,
+.desktop .header-user-menu {
+	right: 85px;
+	top: 52px;
+}
+.header-user-menu li {
+	border-bottom: 1px #dee1e5 solid;
+	color: #93989f;
+	padding: 10px 5px 10px 15px;
+}
+.header-user-menu li:last-child {
+	border-bottom: none;
+}
+header input {
+	background: #262728 url('/images/sprite-header.png') 173px 4px no-repeat;
+	border: 1px #5c5f63 solid;
+	border-radius: 5px;
+	color: #fff;
+	height: 11px;
+	padding: 7px;
+	width: 183px;
+}
+.mobile header input {
+	width: 150px;
+}
+.header-search {
+	width: 183px;
+}
+.tablet .header-search,
+.desktop .header-search {
+	top: 13px;
+	right: 181px;
+}
+.mobile .header-search {
+	position: relative;
+	margin: 0 auto;
+	padding-top: 50px;
+	right: auto;
+}
+
+/* create message form */
+.create-message-form-modal-bg {
+	background: #000;
+	height: 100%;
+	left: 0;
+	opacity: 0.8;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 1;
+}
+.create-message-form-wrapper {
+	height: 100%;
+	position: absolute;
+	width: 100%;
+	z-index: 2;
+}
+.create-message-form {
+	background: #dee1e5;
+	border-radius: 3px;
+	min-height: 165px;
+	margin: 175px auto 0 auto;
+	padding: 20px;
+	width: 50%;
+}
+.mobile .create-message-form {
+	border-radius: 0;
+	height: 100%;
+	margin: 0;
+	position: absolute;
+	width: 100%;
+}
+.create-message-form h2 {
+	color: #70767f;
+	font-size: 17px;
+	margin-bottom: 20px;
+}
+.create-message-form textarea {
+	height: 85px;
+	font-size: 15px;
+	margin-bottom: 10px;
+	width: 100%;
+}
+.mobile .create-message-form textarea {
+	width: 85%;
+}
+.create-message-form .add-photo-link,
+.create-message-form .add-video-link {
+	display: inline-block;
+	color: #a7abb2;
+	font-size: 15px;
+	margin-top: 7px;
+	padding: 3px 40px 0 27px;
+}
+.create-message-form .add-photo-link {
+	background: transparent url('/images/sprite-header.png') 0 -104px no-repeat;
+}
+.create-message-form .add-video-link {
+	background: transparent url('/images/sprite-header.png') 0 -123px no-repeat;
+}
+.create-message-form button {
+	float: right;
+}
+.mobile .create-message-form button {
+	clear: both;
+	float: none;
+	margin-top: 20px;
+}
+.close-message-form {
+	background: transparent url('/images/sprite-header.png') -118px -27px no-repeat;
+	clear: both;
+	height: 21px;
+	margin: 0 auto;
+	position: absolute;
+	top: 155px;
+	right: 17%;
+	width: 23px;
+	z-index: 2;
+}
+.mobile .close-message-form {
+	background: transparent url('/images/sprite-header.png') -118px 0 no-repeat;
+	right: 10px;
+	top: 10px;
+}
+
+/* messages banner */
+.messages-banner {
+	background: url("images/background-hero.jpg") center 0 repeat-x;
+	height: 300px;
+	margin-bottom: 20px;
+	padding-top: 123px;
+}
+.mobile .messages-banner {
+	padding-top: 0px;
+	height: 210px;
+}
+.messages-banner .buttons {
+	padding-top: 28px;
+}
+.messages-banner .buttons a {
+	color: rgba(255,255,255,0.7);
+	cursor: pointer;
+	height: 13px;
+}
+.messages-banner .buttons .add-photo-link {
+	background: url('images/sprite-hero-icons.png') 0 0 no-repeat;
+	padding: 0 25px;
+}
+.messages-banner .buttons .add-video-link {
+	background: url('images/sprite-hero-icons.png') 0 -27px no-repeat;
+	padding: 0 0 0 25px;
+}
+.message-banner-enter-message {
+	background: rgba(0, 178, 134, 0.7);
+	border-radius: 3px;
+	height: 70px;
+	margin: 0px auto;
+	padding: 40px 25px;
+	width: 575px;
+}
+.mobile .message-banner-enter-message {
+	padding: 40px 0 40px 5%;
+	width: 95%;
+}
+.message-banner-enter-message input {
+	background: none;
+	color: #fff;
+	font-family: ProximaNova-Light, arial, sans-serif;
+	font-size: 32px;
+}
+
+.message-banner-enter-message ::-webkit-input-placeholder { color: rgba(255,255,255,0.7); }
+.message-banner-enter-message ::-moz-placeholder { color:#fff; } /* firefox 19+ */
+.message-banner-enter-message :-ms-input-placeholder { color:#fff; } /* ie */
+.message-banner-enter-message input:-moz-placeholder { color:#fff; }
+.messages-banner nav {
+	margin: 0 auto;
+	padding-top: 110px;
+	width: 600px;
+}
+.mobile .messages-banner nav {
+	padding-left: 20px;
+	padding-top: 20px;
+	width: 275px;
+}
+.mobile .messages-banner nav button {
+	display: none;
+}
+.messages-banner nav ul,
+.messages-banner nav li,
+.messages-banner nav button {
+	display: inline-block;
+}
+.messages-banner nav ul {
+	padding-right: 200px;
+}
+.mobile .messages-banner nav ul {
+	margin: 0 auto;
+	padding-right: 0px;
+}
+.messages-banner nav a {
+	color: rgba(255, 255, 255, 0.5);
+	font-family: ProximaNova-Bold;
+	font-size: 13px;
+	margin-right: 43px;
+	padding: 0px 7px 20px 7px;
+	text-transform: uppercase;
+}
+.messages-banner nav a {
+	margin-right: 15px;
+}
+.messages-banner nav a.current {
+	border-bottom: 4px rgb(0, 178, 134) solid;
+	padding-bottom: 16px;
+}
+.grid-button,
+.list-button {
+	cursor: pointer;
+	height: 9px;
+	width: 9px;
+}
+.grid-button {
+	background: url('images/sprite-hero-icons.png') 0 -108px no-repeat;
+}
+.grid-button.current {
+	background: url('images/sprite-hero-icons.png') 0 -90px no-repeat;
+}
+.list-button {
+	background: url('images/sprite-hero-icons.png') 0 -71px no-repeat;
+	margin: 0 12px 0 0;
+}
+.list-button.current {
+	background: url('images/sprite-hero-icons.png') 0 -51px no-repeat;
+}
+.no-csscolumns .list-button,
+.no-csscolumns .grid-button {
+	display: none;
+}
+
+/* messages */
+.messages {
+	clear: both;
+	padding: 45px 160px;
+}
+.tablet .messages { 
+	padding: 45px 80px;
+}
+.mobile .messages { 
+	padding: 45px 20px;
+}
+.desktop .messages.grid {
+	-webkit-column-count: 3; 
+    -moz-column-count: 3;
+    column-count: 3;
+}
+.tablet .messages.grid {
+	-webkit-column-count: 2; 
+    -moz-column-count: 2;
+	column-count: 2;
+}
+.message {
+	border: 1px #dee1e5 solid;
+	border-radius: 3px;
+	color: #70767f;
+	margin: 0 20px 20px 0;
+	overflow: hidden; /* fix for Firefox */
+	break-inside: avoid-column;
+	-webkit-column-break-inside: avoid;
+}
+.message a {
+	color: #bec3cc;
+}
+.message h3 {
+	font-size: 17px;
+	margin-bottom: 15px;
+}
+.message .user-avatar {
+	display: block;
+	float: left;
+	margin-right: 15px;
+}
+.message-content {
+	float: left;
+	padding: 25px;
+}
+.message-content .content {
+	font-size: 16px;
+	line-height: 20px;
+	padding-left: 45px;
+}
+.comments-toggle {
+	background: #fff url('/images/sprite-message-icons.jpg') right -68px no-repeat;
+	clear: both;
+	display: block;
+	height: 15px;
+	font-size: 13px;
+	margin-bottom: 25px;
+	padding: 0 0 0 25px;
+	width: 65px;
+}
+.comments-toggle.expanded {
+	background: #fff url('/images/sprite-message-icons.jpg') right -47px no-repeat;
+	width: 70px;
+}
+.messages .content-photo {
+	display: block;
+	margin-bottom: 30px;
+	width: 100%;
+}
+.mobile .message {
+	margin: 0 20px 20px 20px;
+}
+.message .comment:first-child { 
+	border-top: 1px #dee1e5 solid;
+}
+.message .comment {
+	background: #f9fafb;
+	border-bottom: 1px #dee1e5 solid;
+	clear: both;
+	min-height: 40px;
+	padding: 25px;
+}
+.message .leave-comment {
+	background: #f9fafb;
+	padding: 25px;
+}
+.message .leave-comment input {
+	border: 1px #dee1e5 solid;
+	border-radius: 3px;
+	font-size: 16px;
+	padding: 8px;
+	width: 95%;
+}
+.message nav {
+	clear: both;
+	margin-top: -40px;
+	padding: 0 25px 25px 0;
+	text-align: right;
+}
+.message-share {
+	background: #fff url('/images/sprite-message-icons.jpg') 0 -3px no-repeat;
+	height: 13px;
+	margin-right: 20px;
+	width: 13px;
+}
+.message-like {
+	background: #fff url('/images/sprite-message-icons.jpg') 0 -25px no-repeat;
+	height: 13px;
+	margin-right: 20px;
+	width: 15px;
+}
+.message-time {
+	color: #bec3cc;
+}
+
+/* settings */
+.settings {
+	color: #70767f;
+	margin: 50px auto;
+	width: 570px;
+}
+.mobile .settings {
+	min-width: 300px;
+	padding: 0 10px;
+	width: auto;	
+}
+.settings h2 {
+	font-family: ProximaNova-Light, arial, sans-serif;
+}
+.settings h3 {
+	font-family: ProximaNova-Light, arial, sans-serif;
+	font-size: 12px;
+	margin-bottom: 18px;
+	text-transform: uppercase;
+}
+.settings li {
+	margin-bottom: 15px;
+	vertical-align: top;
+}
+.settings section {
+	border-bottom: 1px #70767f solid;
+	clear: both;
+	padding: 50px 0;
+}
+.settings label {
+	display: block;
+}
+.settings .account-picture {
+	float: left;
+}
+.mobile .settings .account-picture {
+	float: none;
+}
+.settings .account-picture img {
+	margin-bottom: 10px;
+}
+.settings .account-picture button {
+	background: #fff;
+	border: 1px #bfc3cc solid;
+	border-radius: 5px;
+	color: #bfc3cc;
+	display: block;
+	padding: 5px 24px;
+	text-transform: lowercase;
+}
+.mobile .settings .account-picture button {
+	margin-bottom: 15px;
+}
+.settings .text-inputs {
+	margin-left: 130px;
+}
+.mobile .settings .text-inputs {
+	margin-left: 0px;
+}
+.settings .text-input {
+	border: 1px #bfc3cc solid;
+	border-radius: 5px;
+	color: #70767f;
+	font-size: 18px;
+	margin-bottom: 20px;
+	padding: 7px 40px;
+	width: 300px;
+}
+.settings .text-input-name {
+	background: url('/images/sprite-settings-form.jpg') 2px -142px no-repeat;
+}
+.settings .text-input-email {
+	background: url('/images/sprite-settings-form.jpg') 2px -174px no-repeat;
+}
+.settings .text-input-pw {
+	background: url('/images/sprite-settings-form.jpg') 2px -207px no-repeat;
+}
+.settings .image-checkbox {
+	background: url('/images/sprite-settings-form.jpg') 0 -109px no-repeat;
+	margin-right: 15px;
+	height: 25px;
+	width: 50px;
+}
+.settings .image-checkbox.toggled {
+	background: url('/images/sprite-settings-form.jpg') 0 -67px no-repeat;
+}
+.settings .image-select {
+	background: url('/images/sprite-settings-form.jpg') 0 -33px no-repeat;
+	height: 24px;
+	margin-right: 15px;
+	width: 24px;
+}
+.settings .image-select.toggled {
+	background: url('/images/sprite-settings-form.jpg') 0 0 no-repeat;	
+}
+.settings .submit-button {
+	display: block;
+	margin-top: 50px;
+}

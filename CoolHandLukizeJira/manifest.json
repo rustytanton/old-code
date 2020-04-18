@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+
+  "name": "Cool Hand Luke-ize Jira",
+  "description": "What's your dirt doin' in his ditch?",
+  "version": "1.0",
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.atlassian.net/*"],
+      "css": ["lukeize.css"],
+      "js": ["lukeize.js"],
+      "run_at": "document_end"
+    }
+  ],
+
+  "icons" : {
+  	"16" : "lukeize-16x16.png",
+  	"48" : "lukeize-48x48.png",
+  	"128" : "lukeize-128x128.png"
+  },
+
+  "permissions": [
+   "tabs", "http://*/*", "https://*/*"
+   ]
+}

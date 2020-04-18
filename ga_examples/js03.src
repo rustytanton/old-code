@@ -1,0 +1,48 @@
+// custom Wordpress page tracking function
+// use for primary site tracking, external links,
+// and virtual pageviews for JS apps
+//
+// expects a JSON object with optional params:
+//  params.visitorType = commentor or anonymous (GA custom param 1)
+//  params.pageType = page type (GA custom param 2)
+//  params.category = post category (GA custom param 3)
+//  params.subCategory = post subcategory (GA custom param 4)
+//  params.authorName = author of a post (GA custom param 5)
+//  params.url = url param for _trackPageview
+// 
+window.wpPageTrack = function(params) {
+	
+	// merge defaults from plugin/functions.php with specified params
+	var params = $.extend({}, window.gaExampleParams, params);
+	
+	// set GA custom params
+	// also logging messages for demo
+	$.each(params, function(param, paramValue) {
+		
+		switch(param) {
+			case 'visitorType':
+				window._gaq.push('_setCustomVar', 1, 'Visitor Type', paramValue, 3);
+				break;
+			case 'pageType':
+				window._gaq.push('_setCustomVar', 2, 'Page Type', paramValue, 3);
+				break;
+			case 'category':
+				window._gaq.push('_setCustomVar', 3, 'Category', paramValue, 3);
+				break;
+			case 'subCategory':
+				window._gaq.push('_setCustomVar', 4, 'Sub Category', paramValue, 3);
+				break;
+			case 'authorName':
+				window._gaq.push('_setCustomVar', 5, 'Author', paramValue, 3);
+				break;
+		};
+	});
+		
+	// track the page view
+	if (params.url) {
+		window._gaq.push('_trackPageview', params.url);
+	} else {
+		window._gaq.push('_trackPageview');
+	}
+	
+};

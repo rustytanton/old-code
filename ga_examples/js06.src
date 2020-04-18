@@ -1,0 +1,19 @@
+// add tracking event to comment form
+$('#commentform').submit(function() {
+	
+	// if no user name is found, get user type from comment form
+	var user = 'Anonymous';
+	if (window.trackDefaults) { user = window.trackDefaults.name; }
+	if (!user || user == 'Anonymous') {
+		var commenter = $('#author').val();
+		user = commenter ? 'Commenter' : user;
+	}
+	
+	// log the comment
+	window.wpTrackPage({
+		visitorName: user,
+		url: '/leave-comment/' + window.location.href,
+		pageType : 'Comment Form Submission'
+	});
+	
+});

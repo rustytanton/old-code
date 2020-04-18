@@ -1,0 +1,29 @@
+<div ng-controller="ssHeaderController">
+	<div class="create-message-form-modal-bg blur10px" ng-show="showCreateModal"></div>
+	<div class="create-message-form-wrapper" ng-show="showCreateModal">
+		<a class="hide-text close-message-form" ng-click="closeNewMessageModal()">Close</a>
+		<form class="create-message-form" action="" name="createMessageForm"  ng-show="showCreateModal">
+			<h2>Create new message</h2>
+			<textarea name="message"></textarea>
+			<a class="add-photo-link">Add Photo</a>
+			<a class="add-video-link">Add Video</a>
+			<button class="submit-button" ng-click="postMessage()">Post</button>
+		</form>
+	</div>
+	<header>
+		<div class="header-menubar">
+			<a href="/"><h1 class="hide-text">simplysocial</h1></a>
+			<a ng-click="newMessageModal()" class="header-new-message hide-text">Create new message</a>
+			<form class="header-search" name="headersearch">
+				<label><input name="query" type="text" ng-keypress="doSearch($event)" /></label>
+			</form>
+			<img alt="" class="header-user-picture" src="/images/user-picture-example.jpg" ng-mouseover="showUserMenu()" ng-mouseout="hideUserMenu()" />
+		</div>
+		<ul class="header-user-menu" ng-show="userMenuVisible" ng-mouseover="showUserMenu()" ng-mouseout="hideUserMenu()">
+			<li><a href="/profile">Profile</a></li>
+			<li><a href="/followers">Followers</a></li>
+			<li><a href="/following">Following</a></li>
+			<li><a href="/settings">Settings</a></li>
+		</ul>
+	</header>
+</div>

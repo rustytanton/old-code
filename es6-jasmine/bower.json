@@ -1,0 +1,21 @@
+{
+  "name": "es6-jasmine",
+  "version": "0.0.0",
+  "description": "test project",
+  "main": "main.js",
+  "moduleType": [
+    "es6"
+  ],
+  "keywords": [
+    "es6"
+  ],
+  "authors": [
+    "Rusty Tanton"
+  ],
+  "license": "MIT",
+  "homepage": "http://www.perfectsensedigital.com",
+  "devDependencies": {
+    "jquery": "~2.1.4",
+    "jasmine-core": "~2.3.4"
+  }
+}
